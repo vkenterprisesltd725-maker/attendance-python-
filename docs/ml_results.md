@@ -47,3 +47,6 @@ The synthetic target variables (`performance_category` and `risk_level`) were ge
 1. **Synthetic Dataset**: The model predicts patterns that were synthetically injected. Real-world institutional data will likely be much noisier and have non-linear relationships, where Random Forest might ultimately outperform Logistic Regression.
 2. **Feature Limits**: Missing critical socioeconomic or psychological features that often influence real academic risk.
 3. **No Guarantees**: Predictions are statistical estimates and should not be used for automated high-stakes academic decisions without human review.
+
+## Disclaimer
+**IMPORTANT**: The current dataset is synthetic and therefore model performance should not be interpreted as real-world clinical/educational predictive validity. The high accuracy is reflective of the logical constraints built into the synthetic data generation script.

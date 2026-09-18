@@ -1,143 +1,115 @@
 # Student Performance & Academic Risk Prediction System
 
 ## Overview
-The **Student Performance & Academic Risk Prediction System** is a Python-based desktop application designed to help educational institutions monitor academic progress and proactively identify students at risk of underperforming. It combines traditional student data management with machine learning to offer predictive analytics and personalized recommendations.
-
-*Note: This is an Infosys Springboard Industrial Training Project (3rd Semester B.Tech CSE).*
+A comprehensive Python-based desktop application designed to analyze, predict, and mitigate student academic risk. Developed as a final project for an Infosys Springboard Industrial Training Program.
 
 ## Problem Statement
-While institutions collect vast amounts of academic data, it is rarely analyzed systematically in real time. Consequently, students requiring academic support are often identified only after they have failed a course. This project solves this by analyzing continuous assessment data, attendance, and historical performance to flag academic risk early.
+Educational institutions often struggle to proactively identify students at risk of academic failure before critical exams. By the time grades are published, interventions are frequently too late. 
 
 ## Objectives
-1. Store and manage student academic information.
-2. Import datasets via CSV/Excel.
-3. Predict performance categories using Machine Learning.
-4. Identify academic risk levels and explain risk factors.
-5. Provide actionable recommendations.
-6. Generate PDF reports for students and administrators.
+1. Provide a centralized interface to manage student academic records.
+2. Utilize Machine Learning to predict performance categories and overarching risk levels.
+3. Utilize a deterministic Risk Engine to calculate specific Risk Scores and identify actionable factors.
+4. Auto-generate personalized academic interventions and professional PDF reports.
 
-## Features
-### 📌 Implemented (Phases 1, 2, 3)
-- Project Architecture & Initialization
-- Requirements & Database Design
-- ML Strategy & Configuration Boilerplate
-- Synthetic Dataset Generation (1000 records)
-- SQLite Database Implementation & Access Layer
-- Student Service (CRUD & CSV Import)
-- Password Security (PBKDF2 HMAC)
-- Machine Learning Pipeline (Training, Preprocessing, Evaluation)
-- Scikit-Learn Model Persistence (.joblib)
-- Prediction Service Integration
-- Explainable Risk Engine (Score & Factor Detection)
-- Rule-based Recommendation Engine
-- CustomTkinter Desktop GUI
-- Matplotlib Analytics Dashboard
-- Role-based Access Control (Admin/Student)
+## Key Features
+- **CustomTkinter GUI**: Modern, responsive Desktop UI with light/dark modes.
+- **Machine Learning Integration**: Scikit-Learn based classification models.
+- **Rule-based Risk Engine**: Transparent, explainable risk scoring mechanism.
+- **Role-Based Access Control**: Secure Admin vs. Student isolated environments.
+- **Visual Analytics**: Interactive Matplotlib distributions.
+- **ReportLab PDF Generation**: Automated, printable academic profiles.
 
-### ⏳ Planned (Upcoming Phases)
-- **Dashboard**: Visual analytics and statistics.
-- **Reporting Engine**: PDF report generation via ReportLab.
-- **GUI Construction**: Tkinter / CustomTkinter interface.
+## Architecture
+The application strictly follows an N-Tier architecture:
+1. **Presentation Layer**: CustomTkinter UI.
+2. **Service Layer**: Business logic (StudentService, PredictionService, ReportService).
+3. **Intelligence Layer**: Scikit-learn `.joblib` models and deterministic Risk Engine.
+4. **Data Layer**: SQLite Database (`database.py`) with raw SQL queries.
 
 ## Technology Stack
 - **Language**: Python 3.11+
-- **GUI**: CustomTkinter / Tkinter
-- **Database**: SQLite3
-- **Data & ML**: Pandas, NumPy, Scikit-Learn
-- **Visualization**: Matplotlib, Seaborn
+- **GUI**: CustomTkinter, Tkinter
+- **Data Manipulation**: Pandas, NumPy
+- **Machine Learning**: Scikit-Learn, Joblib
+- **Visualization**: Matplotlib
 - **Reporting**: ReportLab
+- **Database**: SQLite3
 - **Testing**: Pytest
 
-## Architecture
-This application follows a strict N-Tier (Layered) Architecture:
-1. **Presentation Layer**: CustomTkinter GUI.
-2. **Service Layer**: Pure Python business logic orchestrating Data and ML.
-3. **Data Access Layer**: SQLite database integration.
-4. **ML Layer**: Scikit-Learn pipeline for training and inference.
+## Machine Learning Approach
+We evaluate multiple algorithms (Logistic Regression, Decision Tree, Random Forest). Logistic Regression was selected for optimal precision and explainability across our dataset. 
 
-See `docs/architecture.md` for full details.
+## Risk Engine & Recommendation Engine
+The machine-learning model predicts the student's performance category and risk class from academic features, while a separate rule-based risk engine identifies actionable academic risk factors. The Recommendation Engine maps these deterministic factors into high/medium/low priority interventions, avoiding opaque LLM hallucination.
+
+## Dataset
+**IMPORTANT: The included dataset is synthetic and is intended for educational/demo purposes.** Model performance should not be interpreted as real-world predictive validity.
 
 ## Project Structure
 ```text
 student-performance-risk/
-├── app.py                 # Application entry point
-├── config/                # Centralized configurations
-├── data/                  # CSV/Excel datasets
-├── database/              # SQLite DB and Schema
-├── docs/                  # Architecture & Requirements documentation
-├── ml/                    # Machine Learning pipeline and scripts
-├── models/                # Saved joblib model artifacts
-├── reports/               # Generated PDF reports
-├── services/              # Business logic layer
-├── tests/                 # Pytest unit and integration tests
-├── ui/                    # CustomTkinter GUI views
-└── utils/                 # Helpers, validators, and loggers
+├── app.py                     # Main GUI Entry Point
+├── data/                      # Synthetic data generation & CSV
+├── database/                  # SQLite schema and operations
+├── ml/                        # ML Pipeline & Training scripts
+├── models/                    # Pickled .joblib models & metadata
+├── services/                  # Core business logic bridging DB, ML, and UI
+├── ui/                        # CustomTkinter Views & Components
+├── tests/                     # 40+ Pytest suite
+├── reports/                   # Generated PDF output directory
+├── examples/                  # CLI demo scripts
+└── docs/                      # Comprehensive technical documentation
 ```
-
-## ML Approach
-A supervised learning approach utilizing classification algorithms (e.g., Random Forest or Logistic Regression) to categorize student performance based on numerical (attendance, marks, backlogs) and categorical (department, gender) features. The complete pipeline utilizes `sklearn.pipeline.Pipeline` to ensure preprocessing steps are perfectly reproducible during UI inference. See `docs/ml_pipeline.md`.
-
-## Database
-A local SQLite database utilizing multiple normalized tables: `users`, `students`, `predictions`, and `recommendations`. See `docs/database.md` for the Entity-Relationship breakdown.
 
 ## Installation
 1. Clone the repository.
-2. Create a virtual environment: `python -m venv .venv`
-3. Activate the environment (`.venv\Scripts\activate` on Windows).
-4. Install dependencies: `pip install -r requirements.txt`
-5. Generate Data: `python data/generate_dataset.py`
-6. Initialize Database: `python database/seed.py`
-7. Train ML Models: `python ml/train_model.py`
+2. Ensure Python 3.11+ is installed.
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Running the Application
-*(Currently only runs the boilerplate initialization)*
+Launch the graphical interface:
 ```bash
 python app.py
 ```
 
-### Machine Learning Workflow
-The system predicts Performance Category and Risk Level independently.
-- To train models and output confusion matrices:
-  ```bash
-  python ml/train_model.py
-  ```
-- To evaluate existing artifacts:
-  ```bash
-  python ml/evaluate_model.py
-  ```
+## ML Training
+To retrain the machine learning models on a fresh dataset:
+```bash
+python ml/train_model.py
+```
 
 ## Demo Credentials
-*(For demonstration purposes only)*
-- **Admin**: `admin` / `Admin@123`
-- **Student**: `STU0001` / `Student@123`
+Use the following credentials to explore the presentation flow:
 
-## Dataset
-A synthetic dataset of 1,000 records containing realistic correlations (e.g., lower attendance generally equates to higher academic risk) was generated to train the model and populate the demo database. See `data/README.md`.
+**Admin Access**
+- Username: `admin`
+- Password: `Admin@123`
+
+**Student Access**
+- Username: `STU0001`
+- Password: `Student@123`
 
 ## Testing
-Unit and integration tests have been developed using `pytest`.
+Run the complete regression suite:
 ```bash
 pytest
 ```
 
-## Future Scope
-- Web Interface & REST API.
-- Cloud database deployment.
-- Real institutional data integration.
-- Automated attendance tracking integration.
+## Screenshots
+*(Insert GUI Screenshots Here)*
 
 ## Limitations
-- Predictions are based on synthetic training data and are restricted by the feature set.
-- This is an academic analytics indicator, **not a guaranteed prediction**, and should not be used for high-stakes academic decisions without human review.
+See `docs/limitations.md`. Predictions support—not replace—academic intervention decisions.
+
+## Future Enhancements
+- Cloud deployment via Flask/FastAPI backend.
+- Integration with institutional LMS (Learning Management Systems).
+- Real-time notification services (Email/SMS) for high-risk flags.
 
 ## Author
-Developed as a 3rd-Semester B.Tech CSE Industrial Training Project.
-
-## Intelligent Prediction Workflow
-The system employs a multi-step intelligence pipeline to move from raw data to actionable insights:
-1. **Student Data**: Base features loaded from SQLite.
-2. **ML Prediction**: Scikit-Learn models predict categorical risk and performance.
-3. **Risk Score**: A deterministic risk engine calculates a 0-100 score based on weighted academic thresholds.
-4. **Risk Factors**: Extracts exact thresholds violated (e.g. Attendance < 75%).
-5. **Recommendations**: Generates personalized, prioritized interventions.
-6. **Prediction History**: The entire structured result is persisted in the database for longitudinal tracking.
+**3rd-Semester B.Tech CSE Student**
+Infosys Springboard Industrial Training Project

@@ -69,6 +69,10 @@ class PredictionView(ctk.CTkFrame):
         else:
             ctk.CTkLabel(self.content_frame, text="No predictions generated yet.").pack(pady=20)
             
+        # --- SYSTEM INFO DISCLAIMER ---
+        disclaimer = "System Information:\nModel: Logistic Regression (Scikit-Learn)\nThe machine-learning model predicts the student's performance category and risk class from academic features, while a separate rule-based risk engine identifies actionable academic risk factors."
+        ctk.CTkLabel(self.content_frame, text=disclaimer, font=("Segoe UI", 11, "italic"), text_color="gray50", wraplength=800, justify="left").pack(padx=20, pady=30, anchor="w")
+            
     def run_prediction(self):
         success, result, msg = PredictionService.run_prediction_for_student(self.student_id)
         if success:

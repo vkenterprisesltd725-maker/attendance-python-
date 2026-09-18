@@ -30,6 +30,9 @@ While institutions collect vast amounts of academic data, it is rarely analyzed 
 - Prediction Service Integration
 - Explainable Risk Engine (Score & Factor Detection)
 - Rule-based Recommendation Engine
+- CustomTkinter Desktop GUI
+- Matplotlib Analytics Dashboard
+- Role-based Access Control (Admin/Student)
 
 ### ⏳ Planned (Upcoming Phases)
 - **Dashboard**: Visual analytics and statistics.

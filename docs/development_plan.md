@@ -23,11 +23,12 @@
 - Complete `prediction_service.py` pipeline.
 - Database persistence for predictions and recommendations.
 
-## Phase 5: GUI Implementation (Upcoming)
-- Develop visualization components using `matplotlib`.
-- Implement `report_service.py` to generate PDF profiles.
+## Phase 5: GUI Implementation (Completed)
+- Develop `CustomTkinter` views.
+- Login screen, Dashboard, Data management, and Prediction views.
+- Integrate GUI with the service layer.
 
-## Phase 6: Testing & Refinement
+## Phase 6: Reporting & Analytics (Upcoming)
 Execute the testing strategy defined below.
 
 ---

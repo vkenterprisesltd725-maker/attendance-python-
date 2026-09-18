@@ -7,10 +7,10 @@ LOG_DIR.mkdir(parents=True, exist_ok=True)
 LOG_FILE = LOG_DIR / "app.log"
 
 def get_logger(name: str) -> logging.Logger:
-    \"\"\"
+    """
     Configures and returns a basic logger for the application.
     Will log to both console and a file without exposing sensitive info.
-    \"\"\"
+    """
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
 

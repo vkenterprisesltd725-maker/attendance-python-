@@ -1,0 +1,35 @@
+{
+    "num_records": 1000,
+    "num_features": 15,
+    "numeric_columns": [
+        "age",
+        "semester",
+        "attendance",
+        "internal_marks",
+        "assignment_marks",
+        "previous_percentage",
+        "study_hours",
+        "assignment_completion",
+        "participation",
+        "backlogs"
+    ],
+    "categorical_columns": [
+        "student_id",
+        "name",
+        "gender",
+        "department",
+        "extracurricular"
+    ],
+    "performance_distribution": {
+        "Needs Improvement": 326,
+        "Average": 310,
+        "Good": 248,
+        "Excellent": 116
+    },
+    "risk_distribution": {
+        "Low": 364,
+        "High": 326,
+        "Medium": 310
+    },
+    "random_seed": 42
+}

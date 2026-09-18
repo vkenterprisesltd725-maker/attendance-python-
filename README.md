@@ -17,17 +17,20 @@ While institutions collect vast amounts of academic data, it is rarely analyzed 
 6. Generate PDF reports for students and administrators.
 
 ## Features
-### 📌 Implemented (Phase 1)
+### 📌 Implemented (Phases 1 & 2)
 - Project Architecture & Initialization
 - Requirements & Database Design
 - ML Strategy & Configuration Boilerplate
+- Synthetic Dataset Generation (1000 records)
+- SQLite Database Implementation & Access Layer
+- Student Service (CRUD & CSV Import)
+- Password Security (PBKDF2 HMAC)
 
 ### ⏳ Planned (Upcoming Phases)
-- **Authentication**: Role-based access (Admin, Student).
 - **Dashboard**: Visual analytics and statistics.
-- **Student Management**: CRUD operations for student records.
 - **Predictive Engine**: Scikit-Learn based classification.
 - **Reporting Engine**: PDF report generation via ReportLab.
+- **GUI Construction**: Tkinter / CustomTkinter interface.
 
 ## Technology Stack
 - **Language**: Python 3.11+
@@ -71,11 +74,12 @@ A supervised learning approach utilizing classification algorithms (e.g., Random
 A local SQLite database utilizing multiple normalized tables: `users`, `students`, `predictions`, and `recommendations`. See `docs/database.md` for the Entity-Relationship breakdown.
 
 ## Installation
-*(Instructions for future implementation)*
 1. Clone the repository.
 2. Create a virtual environment: `python -m venv .venv`
 3. Activate the environment (`.venv\Scripts\activate` on Windows).
 4. Install dependencies: `pip install -r requirements.txt`
+5. Generate Data: `python data/generate_dataset.py`
+6. Initialize Database: `python database/seed.py`
 
 ## Running the Application
 *(Currently only runs the boilerplate initialization)*
@@ -83,11 +87,19 @@ A local SQLite database utilizing multiple normalized tables: `users`, `students
 python app.py
 ```
 
+## Demo Credentials
+*(For demonstration purposes only)*
+- **Admin**: `admin` / `Admin@123`
+- **Student**: `STU0001` / `Student@123`
+
 ## Dataset
-*(Planned)* A synthetic dataset of 500-1000 records containing realistic correlations (e.g., lower attendance generally equates to higher academic risk) will be used to train the model.
+A synthetic dataset of 1,000 records containing realistic correlations (e.g., lower attendance generally equates to higher academic risk) was generated to train the model and populate the demo database. See `data/README.md`.
 
 ## Testing
-Unit and integration tests will be developed using `pytest`.
+Unit and integration tests have been developed using `pytest`.
+```bash
+pytest
+```
 
 ## Future Scope
 - Web Interface & REST API.

@@ -6,12 +6,12 @@
 - Database and architecture designed.
 - Basic configurations set.
 
-## Phase 2: Data Generation & Database Implementation (Upcoming)
+## Phase 2: Data Generation & Database Implementation (Completed)
 - Implement `schema.sql` and `database.py`.
 - Write Python script to generate the synthetic 500-1000 row dataset.
 - Implement `student_service.py` to allow basic CRUD and data import.
 
-## Phase 3: Machine Learning Implementation
+## Phase 3: Machine Learning Implementation (Upcoming)
 - Data validation and preprocessing (`preprocessing.py`).
 - Implement model training (`train_model.py`) with Random Forest/Logistic Regression.
 - Model evaluation and persistence.

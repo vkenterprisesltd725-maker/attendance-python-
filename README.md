@@ -28,6 +28,8 @@ While institutions collect vast amounts of academic data, it is rarely analyzed 
 - Machine Learning Pipeline (Training, Preprocessing, Evaluation)
 - Scikit-Learn Model Persistence (.joblib)
 - Prediction Service Integration
+- Explainable Risk Engine (Score & Factor Detection)
+- Rule-based Recommendation Engine
 
 ### ⏳ Planned (Upcoming Phases)
 - **Dashboard**: Visual analytics and statistics.
@@ -127,3 +129,12 @@ pytest
 
 ## Author
 Developed as a 3rd-Semester B.Tech CSE Industrial Training Project.
+
+## Intelligent Prediction Workflow
+The system employs a multi-step intelligence pipeline to move from raw data to actionable insights:
+1. **Student Data**: Base features loaded from SQLite.
+2. **ML Prediction**: Scikit-Learn models predict categorical risk and performance.
+3. **Risk Score**: A deterministic risk engine calculates a 0-100 score based on weighted academic thresholds.
+4. **Risk Factors**: Extracts exact thresholds violated (e.g. Attendance < 75%).
+5. **Recommendations**: Generates personalized, prioritized interventions.
+6. **Prediction History**: The entire structured result is persisted in the database for longitudinal tracking.

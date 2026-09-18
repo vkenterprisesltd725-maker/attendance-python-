@@ -17,12 +17,13 @@
 - Model evaluation and persistence.
 - Develop `prediction_service.py` and `recommendation_service.py`.
 
-## Phase 4: GUI Implementation (Upcoming)
-- Develop `CustomTkinter` views.
-- Login screen, Dashboard, Data management, and Prediction views.
-- Integrate GUI with the service layer.
+## Phase 4: Risk Engine & Recommendation Integration (Completed)
+- Explainable Risk Engine (`risk_service.py`).
+- Rule-based recommendations (`recommendation_service.py`).
+- Complete `prediction_service.py` pipeline.
+- Database persistence for predictions and recommendations.
 
-## Phase 5: Reporting & Analytics
+## Phase 5: GUI Implementation (Upcoming)
 - Develop visualization components using `matplotlib`.
 - Implement `report_service.py` to generate PDF profiles.
 

@@ -1,0 +1,58 @@
+{
+    "training_timestamp": "2026-09-18T21:48:46.277803",
+    "train_size": 0.8,
+    "test_size": 0.2,
+    "random_seed": 42,
+    "features": {
+        "numerical": [
+            "age",
+            "semester",
+            "attendance",
+            "internal_marks",
+            "assignment_marks",
+            "previous_percentage",
+            "study_hours",
+            "assignment_completion",
+            "participation",
+            "backlogs"
+        ],
+        "categorical": [
+            "gender",
+            "department",
+            "extracurricular"
+        ]
+    },
+    "models": {
+        "performance_category": {
+            "selected_model": "Logistic Regression",
+            "metrics": {
+                "accuracy": 0.94,
+                "precision": 0.9455080745341615,
+                "recall": 0.94,
+                "f1": 0.9403726783968719
+            },
+            "artifact": "performance_model.joblib",
+            "classes": [
+                "Average",
+                "Excellent",
+                "Good",
+                "Needs Improvement"
+            ]
+        },
+        "risk_level": {
+            "selected_model": "Logistic Regression",
+            "metrics": {
+                "accuracy": 0.97,
+                "precision": 0.9702272727272728,
+                "recall": 0.97,
+                "f1": 0.970078178468018
+            },
+            "artifact": "risk_model.joblib",
+            "classes": [
+                "High",
+                "Low",
+                "Medium"
+            ]
+        }
+    }
+}

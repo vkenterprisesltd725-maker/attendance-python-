@@ -11,13 +11,13 @@
 - Write Python script to generate the synthetic 500-1000 row dataset.
 - Implement `student_service.py` to allow basic CRUD and data import.
 
-## Phase 3: Machine Learning Implementation (Upcoming)
+## Phase 3: Machine Learning Implementation (Completed)
 - Data validation and preprocessing (`preprocessing.py`).
 - Implement model training (`train_model.py`) with Random Forest/Logistic Regression.
 - Model evaluation and persistence.
 - Develop `prediction_service.py` and `recommendation_service.py`.
 
-## Phase 4: GUI Implementation
+## Phase 4: GUI Implementation (Upcoming)
 - Develop `CustomTkinter` views.
 - Login screen, Dashboard, Data management, and Prediction views.
 - Integrate GUI with the service layer.

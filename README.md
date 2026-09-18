@@ -17,7 +17,7 @@ While institutions collect vast amounts of academic data, it is rarely analyzed 
 6. Generate PDF reports for students and administrators.
 
 ## Features
-### 📌 Implemented (Phases 1 & 2)
+### 📌 Implemented (Phases 1, 2, 3)
 - Project Architecture & Initialization
 - Requirements & Database Design
 - ML Strategy & Configuration Boilerplate
@@ -25,10 +25,12 @@ While institutions collect vast amounts of academic data, it is rarely analyzed 
 - SQLite Database Implementation & Access Layer
 - Student Service (CRUD & CSV Import)
 - Password Security (PBKDF2 HMAC)
+- Machine Learning Pipeline (Training, Preprocessing, Evaluation)
+- Scikit-Learn Model Persistence (.joblib)
+- Prediction Service Integration
 
 ### ⏳ Planned (Upcoming Phases)
 - **Dashboard**: Visual analytics and statistics.
-- **Predictive Engine**: Scikit-Learn based classification.
 - **Reporting Engine**: PDF report generation via ReportLab.
 - **GUI Construction**: Tkinter / CustomTkinter interface.
 
@@ -80,12 +82,24 @@ A local SQLite database utilizing multiple normalized tables: `users`, `students
 4. Install dependencies: `pip install -r requirements.txt`
 5. Generate Data: `python data/generate_dataset.py`
 6. Initialize Database: `python database/seed.py`
+7. Train ML Models: `python ml/train_model.py`
 
 ## Running the Application
 *(Currently only runs the boilerplate initialization)*
 ```bash
 python app.py
 ```
+
+### Machine Learning Workflow
+The system predicts Performance Category and Risk Level independently.
+- To train models and output confusion matrices:
+  ```bash
+  python ml/train_model.py
+  ```
+- To evaluate existing artifacts:
+  ```bash
+  python ml/evaluate_model.py
+  ```
 
 ## Demo Credentials
 *(For demonstration purposes only)*

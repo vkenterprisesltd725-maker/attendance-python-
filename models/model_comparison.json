@@ -1,0 +1,42 @@
+{
+    "performance_category": {
+        "Logistic Regression": {
+            "accuracy": 0.94,
+            "precision": 0.9455080745341615,
+            "recall": 0.94,
+            "f1": 0.9403726783968719
+        },
+        "Decision Tree": {
+            "accuracy": 0.745,
+            "precision": 0.7528813559322033,
+            "recall": 0.745,
+            "f1": 0.7469692179944676
+        },
+        "Random Forest": {
+            "accuracy": 0.86,
+            "precision": 0.8626760732657084,
+            "recall": 0.86,
+            "f1": 0.8606289457720224
+        }
+    },
+    "risk_level": {
+        "Logistic Regression": {
+            "accuracy": 0.97,
+            "precision": 0.9702272727272728,
+            "recall": 0.97,
+            "f1": 0.970078178468018
+        },
+        "Decision Tree": {
+            "accuracy": 0.835,
+            "precision": 0.8358285063918867,
+            "recall": 0.835,
+            "f1": 0.8353212595419848
+        },
+        "Random Forest": {
+            "accuracy": 0.855,
+            "precision": 0.8759387435895661,
+            "recall": 0.855,
+            "f1": 0.8589920308091208
+        }
+    }
+}

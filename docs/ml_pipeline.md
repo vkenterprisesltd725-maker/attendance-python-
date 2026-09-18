@@ -33,8 +33,23 @@ The pipeline relies heavily on `scikit-learn`'s `Pipeline` and `ColumnTransforme
 - Save the entire trained pipeline using `joblib.dump(pipeline, 'models/risk_model.joblib')`.
 - This ensures the UI application can simply call `pipeline.predict(new_data)` without re-writing the scaling/encoding logic.
 
-## 3. Data Flow
+## 3. Data Leakage Prevention
+Target columns (performance_category and isk_level) and identifiers (student_id, 
+ame) are explicitly excluded from the NUMERICAL_FEATURES and CATEGORICAL_FEATURES arrays. The preprocessing pipeline strictly fits on training data only.
 
-```text
-Student Dataset -> Validation -> Preprocessing (Impute+Scale/Encode) -> Train/Test Split -> Model Training -> Evaluation -> Model Persistence -> Inference (Prediction)
-```
+## 4. Preprocessing
+- **Numerical**: Scaled using StandardScaler.
+- **Categorical**: One-hot encoded using OneHotEncoder(handle_unknown='ignore').
+
+## 5. Model Selection & Results
+Three models (Logistic Regression, Decision Tree, Random Forest) are trained for both targets. Based on actual Phase 3 evaluation:
+- **Performance Model**: Logistic Regression selected (Accuracy: ~94%)
+- **Risk Model**: Logistic Regression selected (Accuracy: ~97%)
+
+*For detailed results, see docs/ml_results.md.*
+
+## 6. Model Persistence
+The entire pipeline (preprocessing + classifier) is saved to avoid skew during inference using joblib. Artifacts:
+- models/performance_model.joblib`n- models/risk_model.joblib`n
+## 7. Prediction Workflow
+The GUI will invoke services/prediction_service.py, which isolates ML inference from the application layer. The service records historical predictions in the SQLite database.

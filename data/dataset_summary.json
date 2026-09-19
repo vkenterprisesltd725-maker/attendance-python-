@@ -1,5 +1,5 @@
 {
-    "num_records": 1000,
+    "num_records": 10,
     "num_features": 15,
     "numeric_columns": [
         "age",
@@ -21,15 +21,15 @@
         "extracurricular"
     ],
     "performance_distribution": {
-        "Needs Improvement": 326,
-        "Average": 310,
-        "Good": 248,
-        "Excellent": 116
+        "Needs Improvement": 4,
+        "Average": 4,
+        "Excellent": 1,
+        "Good": 1
     },
     "risk_distribution": {
-        "Low": 364,
-        "High": 326,
-        "Medium": 310
+        "High": 4,
+        "Medium": 4,
+        "Low": 2
     },
     "random_seed": 42
 }

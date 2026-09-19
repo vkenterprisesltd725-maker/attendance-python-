@@ -5,7 +5,7 @@ import random
 import sys
 from pathlib import Path
 
-def generate_dataset(num_records=1000, seed=42):
+def generate_dataset(num_records=10, seed=42):
     np.random.seed(seed)
     random.seed(seed)
 

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance & Risk Prediction System</title>
+    <style>
+        :root {
+            --primary-color: #2980b9;
+            --secondary-color: #2c3e50;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+            border-bottom: 5px solid var(--primary-color);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .student-info {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--primary-color);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .center-heading {
+            text-align: center;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+
+        .gallery-item .desc {
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Modal (Lightbox) Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        @media(max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Student Performance & Risk Prediction System</h1>
+        <p>A Python Desktop Application leveraging Machine Learning to proactively identify students at academic risk before critical exams.</p>
+    </header>
+
+    <div class="student-info">
+        Developed by: Vikas Kummar Khatik (Roll No: 25EJCCS477) | B.Tech CSE (3rd Sem) | JECRC Foundation | Infosys Springboard
+    </div>
+
+    <div class="container">
+        
+        <div class="center-heading">
+            <h2 class="section-title">About The Project</h2>
+        </div>
+        
+        <div class="about-grid">
+            <div class="card">
+                <h3>🤖 Machine Learning Integration</h3>
+                <p>The system utilizes <strong>Scikit-Learn</strong> classification models (Logistic Regression, Random Forest, Decision Trees) trained on academic datasets. It accurately predicts a student's future performance category and overarching risk level, achieving over 94% accuracy in cross-validation tests.</p>
+            </div>
+            
+            <div class="card">
+                <h3>⚙️ Rule-Based Risk Engine</h3>
+                <p>To ensure explainability, a deterministic rule-based engine runs alongside the ML model. It analyzes 7 key academic factors (Attendance, Internal Marks, Backlogs, etc.) to generate a specific Risk Score (0-100) and maps them into actionable priority recommendations.</p>
+            </div>
+
+            <div class="card">
+                <h3>🖥️ Modern UI Architecture</h3>
+                <p>Built completely in Python using <strong>CustomTkinter</strong>, the system features a responsive, visually appealing desktop interface. It includes secure role-based access control, isolating Admin/Teacher environments from Student dashboard views.</p>
+            </div>
+
+            <div class="card">
+                <h3>📊 Analytics & Reporting</h3>
+                <p>Integrated with <strong>Matplotlib</strong> and <strong>ReportLab</strong>, the application dynamically generates visual analytics (Risk Distributions, Attendance Histograms) and automatically exports printable, professional PDF reports for institutional record-keeping.</p>
+            </div>
+        </div>
+
+        <div class="center-heading">
+            <h2 class="section-title">Application Showcase</h2>
+        </div>
+
+        <div class="gallery">
+            
+            <!-- Items -->
+            <div class="gallery-item">
+                <img src="images/01_login.png" alt="Secure Login Interface" onclick="openModal(this)">
+                <div class="desc">1. Secure Role-Based Login</div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="images/02_admin_dashboard.png" alt="Admin Dashboard Overview" onclick="openModal(this)">
+                <div class="desc">2. Admin Dashboard</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/03_student_management.png" alt="Student Management & Section Filtering" onclick="openModal(this)">
+                <div class="desc">3. Student Roster Management</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/04_student_profile.png" alt="Detailed Student Profile" onclick="openModal(this)">
+                <div class="desc">4. Detailed Academic Profile</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/05_ml_prediction.png" alt="Machine Learning Prediction Results" onclick="openModal(this)">
+                <div class="desc">5. ML Prediction Generation</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/06_risk_analysis.png" alt="Detailed Risk Factor Breakdown" onclick="openModal(this)">
+                <div class="desc">6. Risk Engine Factor Breakdown</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/07_recommendations.png" alt="Actionable Recommendations" onclick="openModal(this)">
+                <div class="desc">7. Automated Recommendations</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/08_analytics.png" alt="Matplotlib Visual Analytics Dashboard" onclick="openModal(this)">
+                <div class="desc">8. Visual Analytics Dashboard</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/09_attendance.png" alt="Teacher Attendance Marking" onclick="openModal(this)">
+                <div class="desc">9. Attendance Management</div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="images/10_generated_report.png" alt="Auto-generated PDF Report" onclick="openModal(this)">
+                <div class="desc">10. Auto-Generated PDF Reports</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="images/11_student_dashboard.png" alt="Student Perspective Dashboard" onclick="openModal(this)">
+                <div class="desc">11. Student Perspective Dashboard</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Student Performance & Risk Prediction System &copy; 2026</p>
+        <p>Built with Python, Scikit-Learn, CustomTkinter, and SQLite.</p>
+    </footer>
+
+    <!-- The Modal -->
+    <div id="imageModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="img01">
+      <div id="caption"></div>
+    </div>
+
+    <script>
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+
+        function openModal(element) {
+          modal.style.display = "block";
+          modalImg.src = element.src;
+          captionText.innerHTML = element.alt;
+        }
+
+        function closeModal() {
+          modal.style.display = "none";
+        }
+        
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
